@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Sentiment Analyzer</title>
+</head>
+<body>
+    <h2>AI Text Sentiment Analyzer</h2>
+
+    <form method="POST">
+        <textarea name="text" rows="5" cols="40" required></textarea><br><br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if prediction %}
+        <h3>Result: {{ prediction }}</h3>
+    {% endif %}
+</body>
+</html>
