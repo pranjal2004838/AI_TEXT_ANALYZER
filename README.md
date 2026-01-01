@@ -1,13 +1,19 @@
-AI Text Sentiment Analyzer
+# AI Text Sentiment Analyzer
 
 Lightweight Flask app that predicts text sentiment (Positive / Negative) using a small scikit-learn model. The repository includes a training script (`model.py`), a simple web UI template (`templates/index.html`), and a Flask server (`app.py`) that exposes both an HTML form and a JSON API.
 
-## Requirements
-- Python 3.8+
-- See `requirements.txt` for Python packages (`flask`, `scikit-learn`, `joblib`).
+## Quick Start Guide
 
-## Setup
-1. Create and activate a virtual environment (recommended):
+Follow these simple steps to get the app running in under 5 minutes:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/pranjal2004838/AI_TEXT_ANALYZER.git
+cd AI_TEXT_ANALYZER
+```
+
+### 2. Set Up the Environment
 
 ```bash
 python -m venv .venv
@@ -15,92 +21,44 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-2. Train the model (this creates `model/sentiment_model.pkl` and `model/vectorizer.pkl`):
+### 3. Train the Model
 
 ```bash
 python model.py
 ```
 
-3. Run the Flask app:
+This will create `sentiment_model.pkl` and `vectorizer.pkl` in the `model/` directory.
+
+### 4. Run the Application
 
 ```bash
 python app.py
 ```
 
-By default the server runs on `http://127.0.0.1:5000/` and serves the web UI.
+The app will be available at `http://127.0.0.1:5000/`.
 
-## Usage
+### 5. Use the Application
 
-- Web UI: open `http://127.0.0.1:5000/`, enter text in the textarea and click "Analyze".
-
-- JSON API: the server accepts JSON POST requests to `/` and returns JSON responses. The app also supports HTML form POST submissions from the UI. If you remove the HTML form, use the JSON API or add query-param GET handling.
-
-Example with `curl`:
+- **Web UI**: Open `http://127.0.0.1:5000/` in your browser, enter text, and click "Analyze".
+- **JSON API**: Send a POST request to `/` with JSON data. Example:
 
 ```bash
 curl -X POST -H "Content-Type: application/json" \
   -d '{"text": "I love this product"}' \
-  AI Text Sentiment Analyzer
+  http://127.0.0.1:5000/
+```
 
-  Lightweight Flask app that predicts text sentiment (Positive / Negative) using a small scikit-learn model. The repository includes a training script (`model.py`), a simple web UI template (`templates/index.html`), and a Flask server (`app.py`) that exposes both an HTML form and a JSON API.
+## Files
 
-  ## Requirements
-  - Python 3.8+
-  - See `requirements.txt` for Python packages (`flask`, `scikit-learn`, `joblib`).
+- `model.py` — trains and saves the model and vectorizer to `model/`.
+- `app.py` — Flask application that loads the model and serves UI/API.
+- `templates/index.html` — simple HTML interface.
+- `model/` — directory that will contain `sentiment_model.pkl` and `vectorizer.pkl`.
 
-  ## Setup
-  1. Create and activate a virtual environment (recommended):
+## Notes
 
-  ```bash
-  python -m venv .venv
-  source .venv/bin/activate
-  pip install -r requirements.txt
-  ```
+- The included training data is minimal and intended for demonstration. For production use, train with a larger, labeled dataset, and add input validation and security checks.
 
-  2. Train the model (this creates `model/sentiment_model.pkl` and `model/vectorizer.pkl`):
+## License
 
-  ```bash
-  python model.py
-  ```
-
-  3. Run the Flask app:
-
-  ```bash
-  python app.py
-  ```
-
-  By default the server runs on `http://127.0.0.1:5000/` and serves the web UI.
-
-  ## Usage
-
-  - Web UI: open `http://127.0.0.1:5000/`, enter text in the textarea and click "Analyze".
-
-  - JSON API: the server accepts JSON POST requests to `/` and returns JSON responses. The app also supports HTML form POST submissions from the UI. If you remove the HTML form, use the JSON API or add query-param GET handling.
-
-  Example with `curl`:
-
-  ```bash
-  curl -X POST -H "Content-Type: application/json" \
-    -d '{"text": "I love this product"}' \
-    http://127.0.0.1:5000/
-  ```
-
-  Example using Python `requests`:
-
-  ```python
-  import requests
-  resp = requests.post("http://127.0.0.1:5000/", json={"text": "Great service"})
-  print(resp.json())
-  ```
-
-  ## Files
-  - `model.py` — trains and saves the model and vectorizer to `model/`.
-  - `app.py` — Flask application that loads the model and serves UI/API.
-  - `templates/index.html` — simple HTML interface.
-  - `model/` — directory that will contain `sentiment_model.pkl` and `vectorizer.pkl`.
-
-  ## Notes
-  - The included training data is minimal and intended for demonstration. For production use, train with a larger, labeled dataset, and add input validation and security checks.
-
-  ## License
-  This project is provided as-is for learning and experimentation.
+This project is provided as-is for learning and experimentation.
